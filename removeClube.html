@@ -3,22 +3,31 @@
 	<head>
 		<title>Remover Clube</title>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="">
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript"></script>
 	</head>
 
 	<body>
-		<header>Aqui você pode remover clubes do sistema.<header>
+		<header>Aqui você pode remover clubes do sistema.</header>
+
 			<nav>
 				<a href="administrador.html">Admin</a>
 				<a href="home.html">Home</a>
 			</nav>
 			
 		<section>
-		<form>
-			<input type="checkbox" name="clube" value="nomeClube">Antropo<br>
-			<button onClick="">Remover</button>
-		</form>
+			<article id="mainClube">
+				<p>Escolha o clube que deseja excluir</p><br>
+				<form>
+					<input list="clubes" name="clube"><br>
+					<datalist id="clubes">
+						<option value="Antro"></option>
+						<option value="SI"></option>
+						<option value="LCC"></option>
+					</datalist>
+					<button onClick="">Remover</button>
+				</form>
+			</article>
 		</section>
 
 		<footer>PAS</footer>

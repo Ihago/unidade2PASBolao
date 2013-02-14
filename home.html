@@ -3,13 +3,13 @@
 	<head>
 		<title>Bolão PAS</title>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="">
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript"></script>
 	</head>
 
 	<body>
 		<header>Bolão PAS - Home</header>
-		<nav>Menu
+		<nav>
 		<table>
 			<tr>
 				<td><a href="home.html">Home</a></td>
@@ -18,6 +18,32 @@
 			</tr>
 		</table>
 		</nav>
+
+		<section>
+			<article id="main">
+				<p>Faça seu login</p>
+				<form name="login">
+					<label for="mail">E-mail:</label><br>
+						<input type="email" name="mail"/><br>
+					<label for="senha">Senha:</label><br>
+						<input id="senha"/><br>
+					<button onclick ="">Entrar</button>
+				</form>
+
+				<p>Ou cadastre-se</p>
+				<form name="cadastro">
+					<label for="nome">Nome:</label><br>
+						<input id="nome"/><br>
+					<label for="mail">E-mail:</label><br>
+						<input type="email" name="mail"/><br>
+					<label for="senha">Senha:</label><br>
+						<input id="senha"/><br>
+					<button onclick ="">Cadastrar</button>
+				</form>
+			</article>
+		</section>
+
+		
 		<footer>PAS</footer>
 	</body>
 
