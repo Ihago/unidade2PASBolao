@@ -4,10 +4,10 @@
 		<title>Bolão PAS</title>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script type="text/javascript"></script>
+		<script type="text/javascript" src="script.js"></script>
 	</head>
 
-	<body>
+	<body id="rod" onload="footer();">
 		<header>Bolão PAS - Home</header>
 		<nav>
 		<table>
@@ -20,31 +20,17 @@
 		</nav>
 
 		<section>
-			<div class="main">
-				<p>Faça seu login</p>
+			<div id="login" class="main">
+				<p>Faça seu login</p><br>
 				<form name="login">
-					<label for="mail">E-mail:</label><br>
-						<input type="email" name="mail"/><br>
-					<label for="senha">Senha:</label><br>
-						<input type="password" name="senha"/><br>
-					<button onclick ="">Entrar</button>
+					<input type="email" name="email" placeholder="e-mail" /><br><br>
+					<input type="password" name="senha" placeholder="password" /><br>
+					<button onclick="">Entrar</button>
 				</form>
-
-				<p>Ou cadastre-se</p>
-				<form name="cadastro">
-					<label for="nome">Nome:</label><br>
-						<input id="nome"/><br>
-					<label for="mail">E-mail:</label><br>
-						<input type="email" name="mail"/><br>
-					<label for="senha">Senha:</label><br>
-						<input type="password" name="senha"/><br>
-					<button onclick ="">Cadastrar</button>
-				</form>
+				<br><h2>Ainda não possui cadastro? <br>Faça o seu agora!</h2>
+				<button onclick="cadastrarUser();">Cadastre-se</button>
 			</div>
-		</section>
-
-		
-		<footer>PAS</footer>
+		</section>	
 	</body>
 
 </html>

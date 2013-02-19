@@ -52,12 +52,18 @@ nav a {
 
 }
 
+footer a {
+	color: #f6ae2c;
+	font-variant: small-caps;
+	font-size: 1.3em;
+}
+
 footer {
 	width: 880px;
-	height: 78px;
-	padding: 70px 10px 0 10px;
+	height: 10px;
+	padding: 170px 0px 10px 0px;
 	text-align: center;
-	margin-bottom: 150px;
+	margin-bottom: 5px;
 	
 	margin-top: 0%;
 	color: #ffffff;
@@ -67,8 +73,7 @@ footer {
 
 .main {
    margin: 3% 60% 6% 6%;
-   width: 550px;
-   height: 363px;
+   
    padding: 16px;
    -webkit-box-shadow: 0px 0px 10px 5px #e7e5c8;
      -moz-box-shadow: 0px 0px 10px 5px #e7e5c8;
@@ -81,6 +86,12 @@ footer {
 	font-family: Georgia;
 	color: #d53533;
 	font-size: 2em;
+}
+
+.main h2 {
+	text-align: center;
+	font-family: Georgia;
+	color: #d53533;
 }
 
 .main label {
@@ -131,4 +142,8 @@ button{
 .mainClube label {
 	font-family: Georgia;
 	color: #d53533;
+}
+
+#login {
+	text-align: center;
 }
