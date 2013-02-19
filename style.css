@@ -65,7 +65,7 @@ footer {
 
 }
 
-#main {
+.main {
    margin: 3% 60% 6% 6%;
    width: 550px;
    height: 363px;
@@ -76,24 +76,24 @@ footer {
    background-color: #e7e5c8; 
 }
 
-#main p {
+.main p {
 	text-align: center;
 	font-family: Georgia;
 	color: #d53533;
 	font-size: 2em;
 }
 
-#main label {
+.main label {
 	font-family: Georgia;
 	color: #d53533;
 }
 
-#main table th{
+.main table th{
 	color: #d53533;
 	font-family: Georgia;
 }
 
-#main table td{
+.main table td{
 	font-family: Georgia;
 	font-size: 1.2em;
 	text-align: center;
@@ -110,7 +110,7 @@ button{
           	border-radius: 6px;     	
 }
 
-#mainClube {
+.mainClube {
    margin: 3% 60% 6% 6%;
    width: 550px;
    height: 163px;
@@ -121,14 +121,14 @@ button{
    background-color: #e7e5c8; 
 }
 
-#mainClube p {
+.mainClube p {
 	text-align: center;
 	font-family: Georgia;
 	color: #d53533;
 	font-size: 2em;
 }
 
-#mainClube label {
+.mainClube label {
 	font-family: Georgia;
 	color: #d53533;
 }

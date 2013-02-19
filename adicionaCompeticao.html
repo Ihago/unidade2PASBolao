@@ -1,15 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Remover Clube</title>
+		<title>Adicionar Competição</title>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript"></script>
 	</head>
 
 	<body>
-		<header>Aqui você pode remover clubes do sistema.</header>
-
+		<header>Aqui você pode adicionar competições ao sistema.</header>
 			<nav>
 				<a href="administrador.html">Admin</a>
 				<a href="home.html">Home</a>
@@ -17,19 +16,14 @@
 			
 		<section>
 			<div class="mainClube">
-				<p>Escolha o clube que deseja excluir</p><br>
+				<p>Adicione a Competição</p><br>
 				<form>
-					<input list="clubes" name="clube"><br>
-					<datalist id="clubes">
-						<option value="Antro"></option>
-						<option value="SI"></option>
-						<option value="LCC"></option>
-					</datalist>
-					<button onClick="">Remover</button>
+					<label for="nomeComp">Nome da competição:</label><br>
+					<input type="text" name="nomeComp"><br>
+					<button onClick="">Adicionar</button>
 				</form>
 			</div>
 		</section>
-
 		<footer>PAS</footer>
 	</body>
 
