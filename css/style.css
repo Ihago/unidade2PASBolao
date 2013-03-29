@@ -77,6 +77,13 @@ footer {
 	padding-top: 2%;	
 }
 
+#info {
+	position: relative;
+	*background-color: white;
+	*margin-right: 650px;
+	margin-left: 80px;
+}
+
 #msg {
 	margin-right: 2.5%;
 	margin-left: 2.5%;
@@ -87,7 +94,7 @@ footer {
 	background-color: white;
 	margin-right: 650px;
 	margin-left: 80px;
-	border-radius: 5px
+	border-radius: 5px;
 }
 
 #tabelaCamp, #tabelaJ{

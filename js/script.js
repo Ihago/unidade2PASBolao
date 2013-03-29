@@ -81,7 +81,7 @@ $(document).ready(function() {
     		contentType: "application/json"
 		}).done(function() {
   			resetForm();
-  			msg("Remoção realizada corretamente. Verifique clicando em GET.");
+  			msg("Remoção realizada corretamente.");
 		});
 	});
 
@@ -125,7 +125,7 @@ $(document).ready(function() {
 			    '<button class="btn btn-primary org" id="butpostUsu">POST Usuário</button>'+
 			'</div>'
 		);
-		msgInfo("Para voltar ao o MENU anterior clique novamente em 'Home' na barra acima.");
+		msgInfo("Para voltar ao o MENU anterior clique novamente em 'HOME' na barra acima.");
 
 		//Botao POST usuario
 		$("#butpostUsu").click(function(){
@@ -183,7 +183,7 @@ $(document).ready(function() {
 			    '<button class="btn btn-primary org" id="butpost">POST Clube</button>'+
 			    '</div>'
 			);
-			msgInfo("Para voltar ao o MENU anterior clique novamente em 'Administrador' na barra acima.");
+			msgInfo("Para voltar ao o MENU anterior clique novamente em ADMINISTRADOR na barra acima.");
 
 			//Botao POST para clube
 			$("#butpost").click(function(){
@@ -229,7 +229,7 @@ $(document).ready(function() {
 			    '<button class="btn btn-primary org" id="butpostCamp">POST Campeonato</button>'+
 			    '</div>'
 			);
-			msgInfo("Para voltar ao o MENU anterior clique novamente em 'Administrador' na barra acima.");
+			msgInfo("Para voltar ao o MENU anterior clique novamente em ADMINISTRADOR na barra acima.");
 
 			//Botao POST para campeonato
 			$("#butpostCamp").click(function(){
@@ -305,7 +305,7 @@ $(document).ready(function() {
 			    '<button class="btn btn-primary org" id="butpostJog">POST Jogos</button>'+
 			    '</div>'
 			);
-			msgInfo("Para voltar ao o MENU anterior clique novamente em 'Administrador' na barra acima.");
+			msgInfo("Para voltar ao o MENU anterior clique novamente em ADMINISTRADOR na barra acima.");
 			
 			var idC;
 			var idV;
@@ -414,7 +414,7 @@ $(document).ready(function() {
 			'<h4 class="x" style="margin-left: 13%; margin-top: 4%;">Escolha uma opcão abaixo:</h4>'+
 			'<div class="dropdown clearfix">'+
 				'<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">'+
-  					'<li><a tabindex="-1" href="#perfil">Meu Perfil</a></li>'+
+  					'<li><a tabindex="-1" href="#listaclubes">Lista de Clubes</a></li>'+
   					'<li><a tabindex="-1" href="#vercampeonato">Ver Campeonatos</a></li>'+
   					'<li><a tabindex="-1" href="#resultjogo">Resultado dos Jogos</a></li>'+
 				'</ul>'+
@@ -422,6 +422,35 @@ $(document).ready(function() {
 		);
 
 		//data-toggle="tooltip" data-placement="right" title="Como o servidor está com problemas não é possível ver o perfil!"
+
+		// Desenha a tabela com informacoes de todos os clubes
+		$("a[href=#listaclubes]").click(function(){	
+			$("#conteudo").html(
+				'<div id="msg"></div>'+
+				'<table id="tabelaJ">'+
+        			'<thead>'+
+          				'<tr>'+
+            				'<th>ID</th>'+
+            				'<th>Nome do Clube</th>'+
+            				'<th>Escudo</th>'+
+          				'</tr>'+
+        			'</thead>'+
+        			'<tbody></tbody>'+
+      			'</table>'
+			);
+
+			getCampeonato();
+			msgInfo("Para voltar ao o MENU anterior clique novamente em PALPITEIRO na barra acima.");
+
+			$.getJSON("http://bolaoshow.herokuapp.com/service/clubes", function(data) {
+				$.each(data, function() {
+					$.each(this, function(name, value) {
+						$("#tabelaJ > tbody").append("<tr><td id='idJ'>"+ value.clube +"</td><td id='nome'>"+ value.nome +"</td><td id='escudo'><img src="+ value.escudo +" width=60 height=60></td></tr>");		
+					});
+				});		
+			});	
+
+		});
 
 		// Desenha a tabela com informacoes sobre os campeonatos
 		$("a[href=#vercampeonato]").click(function(){	
@@ -440,29 +469,22 @@ $(document).ready(function() {
       			'</table>'
 			);
 			getCampeonato();
-			msgInfo("Para voltar ao o MENU anterior clique novamente em 'Palpiteiro' na barra acima.");	
+			msgInfo("Para voltar ao o MENU anterior clique novamente em PALPITEIRO na barra acima.");	
 		});
 
 		// Desenha a tabela com informacoes sobre os jogos
 		$("a[href=#resultjogo]").click(function(){	
-			
-			getCampeonato();
+					
+			desenharTabelaJogos2();
+			msgInfo("Para voltar ao o MENU anterior clique novamente em PALPITEIRO na barra acima.");
 
-			$("#conteudo").html(
-				'<div id="msg"></div>'+
-				'<table id="tabelaCamp">'+
-        			'<thead>'+
-          				'<tr>'+
-            				'<th>ID</th>'+
-            				'<th>Nome</th>'+
-            				'<th>Ano</th>'+
-            				'<th>Descrição</th>'+
-          				'</tr>'+
-        			'</thead>'+
-        			'<tbody></tbody>'+
-      			'</table>'
-			);
-			msgInfo("Para voltar ao o MENU anterior clique novamente em 'Palpiteiro' na barra acima.");	
+			$.getJSON("http://bolaoshow.herokuapp.com/service/jogos", function(data) {
+				$.each(data, function() {
+					$.each(this, function(name, value) {
+						$("#tabelaJ > tbody").append("<tr><td id='idCamp'>"+ value.jogo +"</td><td id='nomeC'>"+ value.clubeCasa.nome +"</td><td id='escudoC'><img src="+ value.clubeCasa.escudo +"></td><td id='placarCasa'>"+ value.placarCasa +"</td><td id='placarVisitante'>"+ value.placarVisitante +"</td><td id='escudoV'><img src="+ value.clubeVisitante.escudo +"></td><td id='nomeV'>"+ value.clubeVisitante.nome +"</td><td id='numeroRodada'>"+ value.numeroRodada +"</td><td id='nomeCamp'>"+ value.campeonato.nome +"</td></tr>");		
+					});
+				});
+			});
 		});
 
 	});
@@ -479,19 +501,44 @@ $(document).ready(function() {
 			$(".btn").click(function() {
 
 				desenharTabelaJogos();	
+				msgInfo("Para voltar ao o MENU anterior clique novamente em PALPITEIRO na barra acima.");
 
 				var id = $(this).closest('tr').find('td:eq(0)').text();
 
 				$.getJSON("http://bolaoshow.herokuapp.com/service/campeonatos/"+id, function(data) {
 					if (data.jogos == null) { 					
-						msgInfo("Infelizmente ainda não existem jogos suficientes para este campeonato! Clique em 'Palpiteiro' para voltar.");
+						msgInfo("Infelizmente ainda não existem jogos suficientes para este campeonato! Clique em PALPITEIRO para voltar.");
 					};
 					$.each(data.jogos, function(name, value) {
-						$("#tabelaJ > tbody").append("<tr><td id='nomeC'>"+ value.clubeCasa.nome +"</td><td id='placarC'>"+ value.placarCasa +"</td><td id='nomeV'>"+ value.clubeVisitante.nome +"</td><td id='placarV'>"+ value.placarVisitante +"</td><td id='nRodada'>"+ value.numeroRodada +"</td><td id='camp'>"+ data.nome +"</td></tr>");		
+						$("#tabelaJ > tbody").append("<tr><td id='escudoC'><img src="+ value.clubeCasa.escudo +"></td><td id='nomeC'>"+ value.clubeCasa.nome +"</td><td id='placarC'>"+ value.placarCasa +"</td><td id='escudoV'><img src="+ value.clubeVisitante.escudo +"></td><td id='nomeV'>"+ value.clubeVisitante.nome +"</td><td id='placarV'>"+ value.placarVisitante +"</td><td id='nRodada'>"+ value.numeroRodada +"</td><td id='camp'>"+ data.nome +"</td></tr>");		
 					});
 				});
 			});
 		});
+	};
+
+
+
+	function desenharTabelaJogos2() {
+		$("#conteudo").html(
+			'<div id="msg"></div>'+
+			'<table id="tabelaJ">'+
+    			'<thead>'+
+      				'<tr>'+
+      					'<th>ID</th>'+
+        				'<th>Nome do Clube da Casa</th>'+
+        				'<th>Escudo</th>'+
+        				'<th>Placar</th>'+
+        				'<th>Placar</th>'+
+        				'<th>Escudo</th>'+
+        				'<th>Nome do Clube Visitante</th>'+
+        				'<th>Numero da Rodada</th>'+
+        				'<th>Nome do Campeonato</th>'+
+      				'</tr>'+
+    			'</thead>'+
+    			'<tbody></tbody>'+
+  			'</table>'
+      	);
 	};
 
 	function desenharTabelaJogos() {
@@ -500,8 +547,10 @@ $(document).ready(function() {
 			'<table id="tabelaJ">'+
     			'<thead>'+
       				'<tr>'+
+      					'<th>Escudo</th>'+
         				'<th>Nome do Clube da Casa</th>'+
         				'<th>Placar</th>'+
+        				'<th>Escudo</th>'+
         				'<th>Nome do Clube Visitante</th>'+
         				'<th>Placar</th>'+
         				'<th>Numero da Rodada</th>'+
