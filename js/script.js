@@ -29,17 +29,6 @@ $(document).ready(function() {
 		);
 	};
 
-	//Botao GET para clube
-	$("#butgetClube").click(function() {
-		$.getJSON("http://bolaoshow.herokuapp.com/service/campeonatos", function(data) {
-			$.each(data, function() {
-				$.each(this, function(name, value) {
-					$("#tabelaClube > tbody").append("<tr><td id='cod'>"+ value.clube +"</td><td id='nome'>"+ value.nome +"</td><td id='esc'>"+ value.escudo +"</td></tr>");	
-				});
-			});
-		});
-	});
-
 	//Botao GET para boloes
 	$("#butgetBoloes").click(function() {
 		$.getJSON("http://bolaoshow.herokuapp.com/service/boloes", function(data) {
@@ -269,18 +258,36 @@ $(document).ready(function() {
 				'<h4><p class="x org">Cadastrar Jogo</p></h4>'+
 				'<form class="form-horizontal">'+
 	      			'<div class="control-group">'+
-	        			'<label class="control-label x" for="idClubeCasa">ID Clube da Casa</label>'+
+	        			'<label class="control-label x" for="listaC">Clube da Casa</label>'+
 	        			'<div class="controls">'+
-	          				'<input type="text" placeholder="12" id="idClubeCasa">'+
-	        			'</div><br>'+
-	        			'<label class="control-label x" for="idClubeVisit">ID Clube Visitante</label>'+
+	        				//	'<input type="text" placeholder="12" id="idClubeCasa">'+
+	        				'<div class="btn-group">'+
+	  							'<a class="btn dropdown-toggle" data-toggle="dropdown" href="#casa">'+
+	    						'Escolha o clube da casa <span class="caret"></span></a>'+
+	  							'<ul class="dropdown-menu" id="listaC"></ul>'+
+							'</div>'+
+						'</div><br>'+
+
+	        			'<label class="control-label x" for="idClubeVisit">Clube Visitante</label>'+
 	        			'<div class="controls">'+
-	          				'<input type="text" placeholder="17" id="idClubeVisit">'+
+	          				//'<input type="text" placeholder="17" id="idClubeVisit">'+
+	        				'<div class="btn-group">'+
+	  							'<a class="btn dropdown-toggle" data-toggle="dropdown" href="#visitante">'+
+	    						'Escolha o clube visitante <span class="caret"></span></a>'+
+	  							'<ul class="dropdown-menu" id="listaV"></ul>'+
+							'</div>'+
 	        			'</div><br>'+
-	        			'<label class="control-label x" for="idCamp">ID Campeonato</label>'+
+
+	        			'<label class="control-label x" for="idCamp">Campeonato</label>'+
 	        			'<div class="controls">'+
-	          				'<input type="text" placeholder="24" id="idCamp">'+
+	          				//'<input type="text" placeholder="24" id="idCamp">'+
+							'<div class="btn-group">'+
+	  							'<a class="btn dropdown-toggle" data-toggle="dropdown" href="#campeonato">'+
+	    						'Escolha o campeonato &nbsp;&nbsp;&nbsp;<span class="caret"></span></a>'+
+	  							'<ul class="dropdown-menu" id="listaCp"></ul>'+
+							'</div>'+	        			
 	        			'</div><br>'+
+
 	        			'<label class="control-label x" for="placarCasa">Placar Clube da Casa</label>'+
 	        			'<div class="controls">'+
 	          				'<input type="text" placeholder="2" id="placarCasa">'+
@@ -299,17 +306,52 @@ $(document).ready(function() {
 			    '</div>'
 			);
 			msgInfo("Para voltar ao o MENU anterior clique novamente em 'Administrador' na barra acima.");
+			
+			var idC;
+			var idV;
+			var idCp;
+			
+			//Botao GET para menu suspenso de clubes
+			$.getJSON("http://bolaoshow.herokuapp.com/service/clubes", function(data) {
+				$.each(data, function() {
+					$.each(this, function(name, value) {
+						$("#listaC").append("<li><a class='a' href='#' id="+ value.clube +">"+ value.nome +"</a></li>");
+						$("#listaV").append("<li><a class='b' href='#' id="+ value.clube +">"+ value.nome +"</a></li>");					
+					});
+				});
+				$(".a").click(function(){	
+					idC = $(this).attr("id");
+					$("a[href=#casa]").html($(this).html());
+				});
+				$(".b").click(function(){	
+					idV = $(this).attr("id");
+					$("a[href=#visitante]").html($(this).html());
+				});
+			});
 
+			//Botao GET para menu suspenso de campeonatos
+			$.getJSON("http://bolaoshow.herokuapp.com/service/campeonatos", function(data) {
+				$.each(data, function() {
+					$.each(this, function(name, value) {
+						$("#listaCp").append("<li><a class='c' href='#' id="+ value.campeonato +">"+ value.nome +"</a></li>");
+					});
+				});
+				$(".c").click(function(){	
+					idCp = $(this).attr("id");
+					$("a[href=#campeonato]").html($(this).html());
+				});
+			});
+				
 			//Botao POST para jogos
 			$("#butpostJog").click(function(){
-				$.getJSON("http://bolaoshow.herokuapp.com/service/clubes/"+$("#idClubeVisit").val(), function(data) {
+				$.getJSON("http://bolaoshow.herokuapp.com/service/clubes/"+idV, function(data) {
 					v = {"clube":data.clube,"escudo":data.escudo,"nome":data.nome};
 				});
-				$.getJSON("http://bolaoshow.herokuapp.com/service/clubes/"+$("#idClubeCasa").val(), function(data) {
+				$.getJSON("http://bolaoshow.herokuapp.com/service/clubes/"+idC, function(data) {
 					
 					c = {"clube":data.clube,"escudo":data.escudo,"nome":data.nome};
 
-					$.getJSON("http://bolaoshow.herokuapp.com/service/campeonatos/"+$("#idCamp").val(), function(data) {		
+					$.getJSON("http://bolaoshow.herokuapp.com/service/campeonatos/"+idCp, function(data) {		
 						cp = {"ano":data.ano,"campeonato":data.campeonato,"descricao":data.descricao,"nome":data.nome};
 
 						var x = {"clubeCasa":c,"clubeVisitante":v,"placarCasa":$("#placarCasa").val(),"placarVisitante":$("#placarVisitante").val(),"numeroRodada":$("#numeroRodada").val(),"campeonato":cp};
@@ -379,11 +421,30 @@ $(document).ready(function() {
 			'</div>'
 		);
 
-
 		//data-toggle="tooltip" data-placement="right" title="Como o servidor está com problemas não é possível ver o perfil!"
 
 		// Desenha a tabela com informacoes sobre os campeonatos
 		$("a[href=#vercampeonato]").click(function(){	
+			$("#conteudo").html(
+				'<div id="msg"></div>'+
+				'<table id="tabelaCamp">'+
+        			'<thead>'+
+          				'<tr>'+
+            				'<th>ID</th>'+
+            				'<th>Nome</th>'+
+            				'<th>Ano</th>'+
+            				'<th>Descrição</th>'+
+          				'</tr>'+
+        			'</thead>'+
+        			'<tbody></tbody>'+
+      			'</table>'
+			);
+			getCampeonato();
+			msgInfo("Para voltar ao o MENU anterior clique novamente em 'Palpiteiro' na barra acima.");	
+		});
+
+		// Desenha a tabela com informacoes sobre os jogos
+		$("a[href=#resultjogo]").click(function(){	
 			
 			getCampeonato();
 
@@ -406,10 +467,6 @@ $(document).ready(function() {
 
 	});
 	
-	// Botao GET para campeonato
-	$("#butgetCamp").click(function() {});
-	
-
 	function getCampeonato() {
 		$.getJSON("http://bolaoshow.herokuapp.com/service/campeonatos", function(data) {
 			$.each(data, function() {					
@@ -427,7 +484,7 @@ $(document).ready(function() {
 
 				$.getJSON("http://bolaoshow.herokuapp.com/service/campeonatos/"+id, function(data) {
 					if (data.jogos == null) { 					
-						msgInfo("Infelizmente ainda não existe jogos para deste campeonato! Clique em 'Palpiteiro' para voltar.");
+						msgInfo("Infelizmente ainda não existem jogos suficientes para este campeonato! Clique em 'Palpiteiro' para voltar.");
 					};
 					$.each(data.jogos, function(name, value) {
 						$("#tabelaJ > tbody").append("<tr><td id='nomeC'>"+ value.clubeCasa.nome +"</td><td id='placarC'>"+ value.placarCasa +"</td><td id='nomeV'>"+ value.clubeVisitante.nome +"</td><td id='placarV'>"+ value.placarVisitante +"</td><td id='nRodada'>"+ value.numeroRodada +"</td><td id='camp'>"+ data.nome +"</td></tr>");		
