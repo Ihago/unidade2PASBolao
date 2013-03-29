@@ -1,0 +1,216 @@
+@charset "UTF-8";
+
+* {
+	margin: 0 auto;
+	padding: 0;
+	font-family: Helvetica, sans-serif;
+	font-size: 1em;
+	color: #000000;
+}
+
+header {
+	color: #f6ae2c;
+	font-variant: small-caps;
+	font-size: 1.3em;
+	padding: 0 30px;
+	
+}
+
+body {
+	background: url("../img/bola.jpg");
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	border: none;
+}
+
+a:hover, a:active {
+	text-decoration: underline;
+	border: none;
+}
+
+nav a {
+	color: #f6ae2c;
+	font-variant: small-caps;
+	font-size: 1.3em;
+	padding: 0 30px;
+}
+
+footer a {
+	color: #f6ae2c;
+	font-variant: small-caps;
+	font-size: 1.3em;
+}
+
+footer {
+	width: 880px;
+	height: 10px;
+	padding: 170px 0px 10px 0px;
+	text-align: center;
+	margin-bottom: 0px;
+	margin-top: 0%;
+	color: #ffffff;
+	font-size: 0.7em;
+
+}
+
+.dropdown .dropdown-menu {
+	display: block; 
+	position: static; 
+	margin-bottom: 5px; 
+	margin-left: 13%;
+	margin-top: 0%;
+	*width: 180px;
+	font-size: 1.5em;
+}
+
+.page-header, .x{
+	color: white;
+}
+
+.textologin {
+	margin-left: 23%;
+}
+
+.form-horizontal {
+	padding-top: 2%;	
+}
+
+#msg {
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+}
+
+#formLogin {
+	position: relative;
+	background-color: white;
+	margin-right: 650px;
+	margin-left: 80px;
+	border-radius: 5px
+}
+
+#tabelaCamp, #tabelaJ{
+	background: white;
+	position: static; 
+	margin-left: 2.5%;
+	margin-top: 4%;
+	width: 600px;
+	*font-size: 1.5em;
+	border-radius: 5px;
+}
+
+
+th {
+	font: bold 14px "Trebuchet MS", Verdana, Arial, Helvetica,
+	sans-serif;
+	color: #6D929B;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+}
+
+td {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #6D929B;
+}
+
+
+#formCad {
+	position: relative;
+	margin-top: 4%;
+	margin-left: 8%;
+}
+
+.org {
+	margin-left: 15.8%;
+}
+
+.main {
+   margin: 3% 60% 6% 6%;
+   
+   padding: 16px;
+   -webkit-box-shadow: 0px 0px 10px 5px #e7e5c8;
+     -moz-box-shadow: 0px 0px 10px 5px #e7e5c8;
+          box-shadow: 0px 0px 10px 5px #e7e5c8;
+   background-color: #e7e5c8; 
+}
+
+.main p {
+	text-align: center;
+	font-family: Georgia;
+	color: #d53533;
+	font-size: 2em;
+}
+
+.main h2 {
+	text-align: center;
+	font-family: Georgia;
+	color: #d53533;
+}
+
+.main label {
+	font-family: Georgia;
+	color: #d53533;
+}
+
+.main table th{
+	color: #d53533;
+	font-family: Georgia;
+}
+
+.main table td{
+	font-family: Georgia;
+	font-size: 1.2em;
+	text-align: center;
+	
+}
+
+button{
+	margin-left: 2%;
+	color: #d53533;
+	font-family: Georgia;
+	margin-top: 2%;
+	background-color: #e7e5c8;
+	-webkit-border-radius: 6px;
+          	border-radius: 6px;     	
+}
+
+.mainClube {
+   margin: 3% 60% 6% 6%;
+   width: 550px;
+   height: 163px;
+   padding: 16px;
+   -webkit-box-shadow: 0px 0px 10px 5px #e7e5c8;
+     -moz-box-shadow: 0px 0px 10px 5px #e7e5c8;
+          box-shadow: 0px 0px 10px 5px #e7e5c8;
+   background-color: #e7e5c8; 
+}
+
+.mainClube p {
+	text-align: center;
+	font-family: Georgia;
+	color: #d53533;
+	font-size: 2em;
+}
+
+.mainClube label {
+	font-family: Georgia;
+	color: #d53533;
+}
+
+#rodape a{
+	padding-left: 30%;
+	padding-right: 30%;
+}
+
+#login {
+	text-align: center;
+}

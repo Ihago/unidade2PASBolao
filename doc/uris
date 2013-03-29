@@ -1,0 +1,24 @@
+//cadastrar jogos POST
+curl -X POST -H "Content-type: application/json" -d '{"clubeCasa":{"clube":"1","escudo":"url","nome":"Testand2222o"},"clubeVisitante":{"clube":"4","escudo":"url","nome":"Vasco Vice"},"placarCasa":"2","placarVisitante":"3","numeroRodada":"40","campeonato":{"ano":"3234234","campeonato":"24","descricao":"dfsdfsdf","nome":"asdas"}}' http://bolaoshow.herokuapp.com/service/jogos
+
+//cadastrar usuario POST
+curl -X POST -H "Content-type: application/json" -d '{"nome":"tony","email":"tony@email.com","login":"tony","senha":"123","permissao":"sei la"}' http://bolaoshow.herokuapp.com/service/usuarios
+
+//deletar jogo
+curl -X DELETE -H "Content-type: application/json" -d '{"campeonato":{"ano":"3234234","campeonato":"24","descricao":"dfsdfsdf","jogos":{"jogo":"35"},"nome":"asdas"},"clubeCasa":{"clube":"1","escudo":"url","nome":"Testand2222o"},"clubeVisitante":{"clube":"4","escudo":"url","nome":"Vasco Vice"},"jogo":"35","numeroRodada":"40","placarCasa":"2","placarVisitante":"3"}' http://bolaoshow.herokuapp.com/service/jogos
+
+//deletra clubes
+curl -X DELETE -H "Content-type: application/json" -d '{"clube":"1","escudo":"url","nome":"Testand2222o"}' http://bolaoshow.herokuapp.com/service/clubes
+
+//deletar campeonato
+curl -X DELETE -H "Content-type: application/json" -d '{"ano":"3234234","campeonato":"24","descricao":"dfsdfsdf","nome":"asdas"}' http://bolaoshow.herokuapp.com/service/campeonatos
+
+
+// POST campeonato
+curl -X POST -H "Content-type: application/json" -d '{"nome":"O MELHOR", "ano":"2014", "descricao":"LOL"}' http://bolaoshow.herokuapp.com/service/campeonatos
+
+
+
+
+// não consegui fazar post de bolao
+curl -X POST -H "Content-type: application/json" -d '{"nome":"Bolao System Teste","apostadores":[{"nome":"tony","e-mail":"tony@email.com","login":"tony","senha":"123","permissao":"sei la"}],"campeonato":{"nome":"O MELHOR","ano":"2014","descricao":"LOL"}}' http://bolaoshow.herokuapp.com/service/boloes
